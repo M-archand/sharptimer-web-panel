@@ -9,7 +9,7 @@ if(isset($_POST['checkbox'])){
     overflow: scroll;width: 100%;">';
     for($a = 0; $a < count($checkbox); $a++){
         $b = $checkbox[$a];
-        $sql = "SELECT * from playerstats WHERE `SteamID` LIKE '{$b}'";
+        $sql = "SELECT * from PlayerStats WHERE `SteamID` LIKE '{$b}'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {

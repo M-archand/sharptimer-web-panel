@@ -9,11 +9,11 @@
         ShowRowsGlobal($sql);
     }
     elseif($id === "alltime"){
-        $sql = "SELECT `SteamID`, `PlayerName`, `FormattedTime`, `MapName`, `TimesFinished`, RANK() OVER(ORDER BY `TimerTicks` ASC) AS 'Ranking' FROM PlayerRecords ORDER BY `TimerTicks` ASC LIMIT 10";
+        $sql = "SELECT `SteamID`, `PlayerName`, `FormattedTime`, `MapName`, `TimesFinished`, `TimerTicks`, RANK() OVER(ORDER BY `TimerTicks` ASC) AS 'Ranking' FROM PlayerRecords ORDER BY `TimerTicks` ASC LIMIT 10";
         ShowRows($sql);
     }
     else{
-        $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName`, `TimesFinished` FROM PlayerRecords WHERE MapName LIKE '{$id}'  ORDER BY `TimerTicks` ASC LIMIT 10";
+        $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName`, `TimesFinished`, `TimerTicks` FROM PlayerRecords WHERE MapName LIKE '{$id}'  ORDER BY `TimerTicks` ASC LIMIT 10";
         ShowRows($sql);
     }
    

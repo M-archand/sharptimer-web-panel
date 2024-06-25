@@ -15,12 +15,12 @@ if($dataid === "global"){
     $sqlAll = "SELECT DISTINCT `SteamID`, `PlayerName`, `GlobalPoints`, (SELECT COUNT(*) FROM PlayerRecords WHERE PlayerStats.SteamID = PlayerRecords.SteamID) AS 'Cunt' FROM PlayerStats ORDER BY `GlobalPoints` DESC";
 }
 elseif($dataid === "alltime"){
-    $sql = "SELECT `SteamID`, `PlayerName`, `FormattedTime`, `MapName`, `TimesFinished`, RANK() OVER(ORDER BY `TimerTicks` ASC) AS 'Ranking' FROM PlayerRecords ORDER BY `TimerTicks` ASC LIMIT $last, $offset";
-    $sqlAll = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName`, `TimesFinished` FROM PlayerRecords ORDER BY `TimerTicks` ASC ";
+    $sql = "SELECT `SteamID`, `PlayerName`, `FormattedTime`, `MapName`, `TimesFinished`, `TimerTicks`, RANK() OVER(ORDER BY `TimerTicks` ASC) AS 'Ranking' FROM PlayerRecords ORDER BY `TimerTicks` ASC LIMIT $last, $offset";
+    $sqlAll = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName`, `TimesFinished`, `TimerTicks` FROM PlayerRecords ORDER BY `TimerTicks` ASC ";
 }
 else{
-    $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName`, `TimesFinished` FROM PlayerRecords WHERE MapName LIKE '{$dataid}'  ORDER BY `TimerTicks` ASC LIMIT $last, $offset";
-    $sqlAll = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName`, `TimesFinished` FROM PlayerRecords WHERE MapName LIKE '{$dataid}' ORDER BY `TimerTicks` ASC ";
+    $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName`, `TimesFinished`, `TimerTicks` FROM PlayerRecords WHERE MapName LIKE '{$dataid}'  ORDER BY `TimerTicks` ASC LIMIT $last, $offset";
+    $sqlAll = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName`, `TimesFinished`, `TimerTicks` FROM PlayerRecords WHERE MapName LIKE '{$dataid}' ORDER BY `TimerTicks` ASC ";
 }
 
 

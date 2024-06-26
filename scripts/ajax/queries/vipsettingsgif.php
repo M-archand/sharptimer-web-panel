@@ -8,9 +8,7 @@ $gifexp = explode('/', $gif);
 $gifexp2 = explode('.gif', $gifexp[3]);
 $sql = "SELECT * FROM PlayerStats WHERE SteamID = '{$steam}'";
 $result = $conn->query($sql);
-//$gifvalidate = preg_match('/^(http|https):\/\/(.*?)\.(imgur)\.(com)\/(.*?)\.(png|jpg|gif|PNG|JPG|GIF)$/i',$gif);
-//$gifvalidate = preg_match('/^(http|https):\/\/(.*?)\.(imgur)\.(com)\/(.*?)\.(gif|GIF)$/i',$gif);
-$gifvalidate = preg_match('/^https?:\/\/(\w+\.)?files\.catbox\.moe\/(\w*\d\w*)+(\.[a-zA-Z]{3})?$/', $gif);
+$gifvalidate = preg_match('/^https?:\/\/(\w+\.)?files\.catbox\.moe\/(.*?)+\.gif$/', $gif);
 if(filter_var($gif, FILTER_VALIDATE_URL) === FALSE || $gifvalidate === 0){
   echo '<div style="display: flex;
   justify-content: space-between;
